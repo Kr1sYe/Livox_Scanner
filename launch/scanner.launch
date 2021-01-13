@@ -1,0 +1,14 @@
+<launch>
+
+  <arg name="rviz" default="true" />
+  <param name="map_file_path" type="string" value="/home/k/livox_ws/" />
+  
+  <include file="$(find paintingrobot2_description)/launch/urdf_upload.launch"/>
+
+  <node pkg="scanner_publisher" type="scanner_publisher_node" name="scanner_publisher_node" output="screen"/>
+
+  <group if="$(arg rviz)">
+    <node launch-prefix="nice" pkg="rviz" type="rviz" name="rviz" args="-d $(find scanner_publisher)/config/livox_rviz_show_only.rviz"/>
+  </group>
+
+</launch>
