@@ -186,6 +186,11 @@ int main(int argc, char **argv)
     
     // ros::Subscriber odom_sub_ = nh.subscribe<nav_msgs::Odometry>("/odom",10,GetLivoxPose);
     // pointcloud_pub = nh.advertise<sensor_msgs::PointCloud2>("scaner_lidar_pointcloud", 10);
-    ros::spin();
+    // ros::spin();
+
+    ros::AsyncSpinner spinner(4);
+    spinner.start();
+    ros::waitForShutdown();
+    
     return 0;
 }

@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<launch>
+
+    <arg name="station_1" default="/home/k/livox_ws/livox_station_1.pcd"/>
+    <arg name="station_2" default="/home/k/livox_ws/livox_station_2.pcd"/>
+
+    <node pkg="scanner_publisher" type="test_icp" name="test_icp_node" 
+            args = "$(arg station_1) $(arg station_2)" output = "screen" />
+
+    <node pkg="tf" type="static_transform_publisher" name="link1_link2_broadcaster" args="0 0 0 0 0 0 1 map odom 100" />
+
+    <node launch-prefix="nice" pkg="rviz" type="rviz" name="rviz" args="-d $(find scanner_publisher)/config/livox_rviz_icp.rviz"/>
+
+</launch>

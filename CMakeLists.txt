@@ -57,3 +57,14 @@ target_link_libraries(
     ${catkin_LIBRARIES}
     ${PCL_LIBRARIES}
     )
+
+
+add_executable(test_icp
+    src/icp_test.cpp
+)
+target_link_libraries(test_icp ${catkin_LIBRARIES} ${PCL_LIBRARIES})
+
+add_executable(test_icp2
+    src/icp_test2.cpp
+)
+target_link_libraries(test_icp2 ${catkin_LIBRARIES} ${PCL_LIBRARIES})
